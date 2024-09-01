@@ -27,6 +27,7 @@ const addToCart = async (req, res) => {
     cart.items.push({
       foodId: food._id,
       name: food.name,
+      summary: food.summary,
       description: food.description,
       price: food.price,
       imageUrl: food.imageUrl

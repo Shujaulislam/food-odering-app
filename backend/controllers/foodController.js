@@ -10,8 +10,8 @@ const getFoods = async (req, res) => {
 };
 
 const createFood = async (req, res) => {
-  const { name, description, price, imageUrl } = req.body;
-  const food = new Food({ name, description, price, imageUrl });
+  const { name, summary, description, price, imageUrl } = req.body;
+  const food = new Food({ name, summary, description, price, imageUrl });
   
   try {
     const savedFood = await food.save();
@@ -23,10 +23,10 @@ const createFood = async (req, res) => {
 
 const editFood = async (req, res) => {
   const { id } = req.params;
-  const { name, description, price, imageUrl } = req.body;
+  const { name, description, summary, price, imageUrl } = req.body;
 
   try {
-    const updatedFood = await Food.findByIdAndUpdate(id, { name, description, price, imageUrl }, { new: true });
+    const updatedFood = await Food.findByIdAndUpdate(id, { name, summary, description, price, imageUrl }, { new: true });
     if (!updatedFood) {
       return res.status(404).json({ message: 'Food item not found' });
     }
@@ -36,4 +36,18 @@ const editFood = async (req, res) => {
   }
 };
 
-module.exports = { getFoods, createFood, editFood };
+const getFoodById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const food = await Food.findById(id);
+    if (!food) {
+      return res.status(404).json({ message: 'Food not found' });
+    }
+    res.json(food);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+module.exports = { getFoods, createFood, editFood, getFoodById };

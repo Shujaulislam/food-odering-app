@@ -43,3 +43,13 @@ export const removeCartItem = async (itemId) => {
   const data = await res.json();
   return data;
 };
+
+export const getFoodById = async (id) => {
+  const res = await fetch(`${API_URL}/foods/${id}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch food item');
+  }
+  const data = await res.json();
+  return data;
+};
+

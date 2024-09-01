@@ -31,3 +31,32 @@ body {
     text-wrap: balance;
   }
 }
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Features section styling */
+.feature-item {
+  transition: transform 0.3s ease-in-out;
+}
+
+.feature-item:hover {
+  transform: scale(1.05);
+}
+
+/* Testimonials slider styling */
+.testimonial-item {
+  font-style: italic;
+  color: #333;
+}
+
+/* CTA section styling */
+.cta {
+  background: rgba(34, 197, 94, 0.8); /* Adjusted for glass effect */
+  backdrop-filter: blur(8px);
+}

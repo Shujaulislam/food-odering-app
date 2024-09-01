@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getFoods, addToCart, addToWishlist, removeFromCart } from "../utils/api"; // Import removeFromCart API function
+import { getFoods, addToCart, addToWishlist, removeFromCart } from '@/utils/api'; // Import removeFromCart API function
 import { IoCartOutline, IoTrashOutline } from "react-icons/io5";
+import Link from "next/link";
 
 const Menu = () => {
   const [foods, setFoods] = useState([]);
@@ -46,13 +47,13 @@ const Menu = () => {
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 justify-center pt-4 gap-14 ">
         {foods.map((item) => (
           <div className="w-72 bg-white shadow-md rounded-xl hover:shadow-xl" key={item._id}>
-            <a href="#">
-              <img
-                src={item.imageUrl}
-                alt="Product"
-                className="h-80 w-72 object-cover rounded-t-xl duration-500 hover:scale-[1.05] "
-              />
-            </a>
+          <Link href={`/cart_item/${item._id}`}>
+            <img
+            src={item.imageUrl}
+            alt="Product"
+             className="h-80 w-72 object-cover rounded-t-xl duration-500 hover:scale-[1.05]"
+            />
+          </Link>
             <div className="px-4 py-3 w-72">
               <p className="text-lg font-bold text-black truncate block capitalize">
                 {item.name}
