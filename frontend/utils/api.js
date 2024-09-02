@@ -5,7 +5,12 @@ export const getFoods = async () => {
   const data = await res.json();
   return data;
 };
-
+export const getAllCategories = async () => 
+  {
+    const res = await fetch(`${API_URL}/getAllcategories`);
+   const  data = await res.json()
+   return data;
+  }
 export const createFood = async (foodData) => {
   const res = await fetch(`${API_URL}/postFood`, {
     method: 'POST',
@@ -51,5 +56,10 @@ export const getFoodById = async (id) => {
   }
   const data = await res.json();
   return data;
+};
+export const getSubcategoriesByCategory = async (categoryId) => {
+  const res = await fetch(`${API_URL}/subcategories/${categoryId}`);
+  const data = res.json()
+  return data
 };
 
